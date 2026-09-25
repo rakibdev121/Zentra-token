@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+<title>Deep Vein</title>
+<script src="https://telegram.org/js/telegram-web-app.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="app">
+
+  <header class="topbar">
+    <div class="miner">
+      <div class="avatar" id="avatar">?</div>
+      <div>
+        <div class="miner-name" id="miner-name">Miner</div>
+        <div class="miner-sub" id="streak-sub">No streak yet</div>
+      </div>
+    </div>
+    <div class="balance">
+      <span id="coin-count">0</span>
+      <span class="unit">ORE</span>
+    </div>
+  </header>
+
+  <main class="shaft" id="tab-mine">
+    <div class="rock-wrap">
+      <button class="rock" id="rock-btn" aria-label="Tap to mine">
+        <svg viewBox="0 0 200 200" class="rock-svg">
+          <polygon points="100,15 165,55 180,120 130,180 70,180 20,120 35,55"
+                   fill="url(#oreGrad)" stroke="#3a2f22" stroke-width="4"/>
+          <polygon points="100,15 135,70 100,100 65,70" fill="#5a4a34" opacity="0.6"/>
+          <circle cx="80" cy="90" r="8" class="vein"/>
+          <circle cx="120" cy="115" r="6" class="vein"/>
+          <circle cx="95" cy="140" r="5" class="vein"/>
+          <defs>
+            <linearGradient id="oreGrad" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stop-color="#4a3d2c"/>
+              <stop offset="100%" stop-color="#241d15"/>
+            </linearGradient>
+          </defs>
+        </svg>
+      </button>
+      <div id="pop-layer" class="pop-layer"></div>
+    </div>
+
+    <div class="energy-row">
+      <div class="energy-icon">⚡</div>
+      <div class="energy-track">
+        <div class="energy-fill" id="energy-fill"></div>
+      </div>
+      <div class="energy-label" id="energy-label">0/1000</div>
+    </div>
+  </main>
+
+  <section class="tab hidden" id="tab-daily">
+    <h2>Daily bonus</h2>
+    <p class="muted">Claim once every 24 hours. Miss a day and the streak resets.</p>
+    <div class="streak-track" id="streak-track"></div>
+    <button class="cta" id="claim-btn">Claim today's ore</button>
+    <p class="hint" id="daily-hint"></p>
+  </section>
+
+  <section class="tab hidden" id="tab-referral">
+    <h2>Bring in miners</h2>
+    <p class="muted">Each friend who opens the app through your link adds 500 ORE to your vein, once.</p>
+    <div class="ref-stat">
+      <span id="ref-count">0</span> miners recruited
+    </div>
+    <div class="ref-link-box">
+      <input id="ref-link" readonly>
+      <button id="copy-btn">Copy</button>
+    </div>
+  </section>
+
+  <section class="tab hidden" id="tab-leaderboard">
+    <h2>Deepest veins</h2>
+    <ol class="board" id="board-list"></ol>
+  </section>
+
+  <nav class="tabbar">
+    <button class="tabbtn active" data-tab="mine">Mine</button>
+    <button class="tabbtn" data-tab="daily">Daily</button>
+    <button class="tabbtn" data-tab="referral">Invite</button>
+    <button class="tabbtn" data-tab="leaderboard">Ranks</button>
+  </nav>
+
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>

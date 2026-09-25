@@ -1,0 +1,22 @@
+services:
+  - type: web
+    name: raki-mining-api
+    runtime: python
+    rootDir: backend
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn main:app --host 0.0.0.0 --port $PORT
+    healthCheckPath: /api/health
+    envVars:
+      - key: BOT_TOKEN
+        sync: false
+      - key: DATABASE_URL
+        sync: false
+      - key: CORS_ORIGINS
+        sync: false
+
+  - type: web
+    name: raki-mining-frontend
+    runtime: static
+    rootDir: frontend
+    buildCommand: echo "Static frontend ready"
+    staticPublishPath: .
